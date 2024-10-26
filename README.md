@@ -5,5 +5,4 @@
 
 api地址是127.0.0.1:8000/nailong 
 POST ```json
-{"url":"http://a.com/a.png"}
-```
+{"url":"http://a.com/a.png"}```
