@@ -8,3 +8,4 @@ keras>=2.4
 requests~=2.32.3
 pydantic~=2.9.2
 uvicorn~=0.30.6
+torchsampler~=0.1.2

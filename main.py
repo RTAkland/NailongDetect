@@ -10,6 +10,8 @@ from pydantic import BaseModel
 from torch import Tensor, nn
 from torchvision import transforms
 
+from nl import is_nailong
+
 api = FastAPI()
 
 transform = transforms.Compose(
@@ -93,6 +95,15 @@ async def contains_nailong(payload: Payload):
     result = check_image(img)
     os.remove(filename)
     return {"result": bool(result[0])}
+
+@api.post("/nailong2")
+async def contains_nailong2(payload: Payload):
+    filename = payload.url.split("/")[-1]
+    with open(filename, "wb") as f:
+        f.write(requests.get(payload.url).content)
+    result = is_nailong(filename)
+    os.remove(filename)
+    return {"result": result}
 
 
 if __name__ == '__main__':
